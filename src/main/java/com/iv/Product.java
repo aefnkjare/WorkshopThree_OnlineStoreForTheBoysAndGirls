@@ -37,7 +37,11 @@ class Product{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
 

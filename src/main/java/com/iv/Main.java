@@ -24,8 +24,9 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        loadProductsFromFile();
 
-//        loadProductsFromFile;
+        System.out.println(inventory);
         // Run custom static method called loadProductsFromFile
 
         // Create main menu:
@@ -55,11 +56,21 @@ public class Main {
                 /// input split ||
                 String[] splitInput = input.split(Pattern.quote("|"));
 
-                String id = splitInput[0];
-                String name = splitInput[1];
-                float price = Float.parseFloat(splitInput[2]);
+                String productIdInput = splitInput[0];
+                String productNameInput = splitInput[1];
+                float productPriceInput = Float.parseFloat(splitInput[2]);
 
+                Product currentProduct = new Product(productIdInput, productNameInput, productPriceInput);
 
+                inventory.add(currentProduct);
+
+//                System.out.printf("Product Id: %s, Name: %s, Price: $%.2f\n",
+//                        currentProduct.getId(),
+//                        currentProduct.getName(),
+//                        currentProduct.getPrice()
+//                );
+
+//                System.out.println(splitInput);
             }
         } catch (IOException e) {
             e.printStackTrace();
