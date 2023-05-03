@@ -25,6 +25,30 @@ public class Main {
 
     public static void main(String[] args) {
         loadProductsFromFile();
+        String input;
+        do {
+            System.out.println("Choose an option: ");
+            System.out.println("\t 1: Show Products: ");
+            System.out.println("\t 2: Show Cart: ");
+            System.out.println("\t 3: EXIT: ");
+
+            input = scanner.nextLine();
+
+            switch (input) {
+                case "1":
+                    showProducts();
+                    break;
+                case "2":
+                    showCart();
+                    break;
+                case "3":
+                    System.out.println("EXITED");
+                    break;
+                default:
+                    System.out.println("Invalid Input here as well Bozo, give me a right answer next time.");
+            }
+
+        } while (!input.equalsIgnoreCase("3"));
 
         System.out.println(inventory);
         // Run custom static method called loadProductsFromFile
@@ -60,18 +84,17 @@ public class Main {
                 String productNameInput = splitInput[1];
                 float productPriceInput = Float.parseFloat(splitInput[2]);
 
-                Product currentProduct = new Product(productIdInput, productNameInput, productPriceInput);
+                Product newProduct = new Product(productIdInput, productNameInput, productPriceInput);
 
-                inventory.add(currentProduct);
+                inventory.add(newProduct);
 
 //                System.out.printf("Product Id: %s, Name: %s, Price: $%.2f\n",
 //                        currentProduct.getId(),
 //                        currentProduct.getName(),
 //                        currentProduct.getPrice()
 //                );
-
 //                System.out.println(splitInput);
-            }
+             }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,17 +134,18 @@ public class Main {
         // Default:
         // Show message "Input command not found"
     }
+
+    public static void showProducts() {
+        for (int i = 0; i < inventory.size();i++) {
+            Product currentProduct = inventory.get(i);
+            System.out.println(inventory.get(i));
+        }
+    }
+
+    public static void showCart() {
+        for (int i = 0; i < inventory.size();i++) {
+            Product currentCart = inventory.get(i);
+            System.out.println(inventory.get(i));
+        }
+    }
 }
-
-// Create product class
-
-// Initialize product properties:
-// int id
-// String name
-// float price
-
-// Create constructor that takes in all properties
-
-// Create getters and setters
-
-// (Optional) Create overridden toString method
